@@ -33,7 +33,6 @@ class Question(models.Model):
         null=True
     )
     correct = models.PositiveIntegerField(
-        max_length=1,
         null=True
     )
 

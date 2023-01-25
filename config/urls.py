@@ -17,11 +17,16 @@ from django.contrib import admin
 from django.urls import path, include
 from question.views import QuestionViewSet
 from rest_framework import routers
+from django.urls import re_path as url
+from django.utils.translation import gettext_lazy as _
+from django.utils.encoding import force_str as force_text
 
 router = routers.DefaultRouter()
 router.register(r'question', QuestionViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('auth/registration/', include('dj_rest_auth.registration.urls')),
+    path('auth/', include('dj_rest_auth.urls')),
     path('', include(router.urls)),
 ]
