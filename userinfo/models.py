@@ -7,3 +7,6 @@ class UserInfo(models.Model):
     totalAnswers = models.PositiveIntegerField(default=0)
     rightAnswers = models.PositiveIntegerField(default=0)
     wrongAnswers = models.PositiveIntegerField(default=0)
+
+    def __str__(self):
+        return self.user.id

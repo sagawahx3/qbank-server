@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from question.views import QuestionViewSet
+from userinfo.views import UserInfoViewSet
 from rest_framework import routers
 from django.urls import re_path as url
 from django.utils.translation import gettext_lazy as _
@@ -29,4 +30,6 @@ urlpatterns = [
     path('auth/registration/', include('dj_rest_auth.registration.urls')),
     path('auth/', include('dj_rest_auth.urls')),
     path('', include(router.urls)),
+    path('userinfo/<int:pk>/', UserInfoViewSet.get_object),
+
 ]
