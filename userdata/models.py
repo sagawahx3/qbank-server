@@ -6,7 +6,8 @@ from django.db.models.signals import post_save
 
 class UserData(models.Model):
 
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user= models.OneToOneField(User, on_delete=models.CASCADE)
+    #    use= models.ForeignKey(User, on_delete=models.CASCADE)
     answeredQuestions = models.IntegerField(default=0)
     wrongQuestions = models.IntegerField(default=0)
     rightQuestions = models.IntegerField(default=0)

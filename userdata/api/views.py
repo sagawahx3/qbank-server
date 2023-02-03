@@ -23,10 +23,37 @@ class UserDataViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         userdata = UserData.objects.all()
         return userdata
-
+# get
     def retrieve(self, request, *args, **kwargs):
         param = kwargs
         print(param['pk'])
+        # split list of kwargs separated by -
+        # params_list = param['pk'].split('-')
         userdata = UserData.objects.filter(wrongQuestions=param['pk'])
+        # filter object by 2 vars
+        # userdata2 = UserData.objects.filter(wrongQuestions=params_list[0], rightQuestions=params_list[1])
+
         serializer = UserDataSerializer(userdata, many=True)
         return Response(serializer.data)
+# post
+#    def create(self, request, *args, **kwargs):
+#        data = request.data
+#
+#        new_userdata = UserData.objects.create(user=data["id"], answeredQuestions=["total"], rightQuestions=["right"], wrongQuestions=["wrong"])
+#
+#        new_userdata.save()
+#
+#        serializer = UserDataSerializer(new_userdata)
+#
+#        return Response(serializer.data)
+
+#delete
+
+#   def destroy(self, request, *args, **kwargs):
+#   loggedIn_user = request.user
+#   if(loggedIn_user == "admin")
+#       data = self.getData()
+#       data.delete()
+#       return Response({"message": "data has been deleted"})
+#   else
+#       return Response({"message": "not allowed"})

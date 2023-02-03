@@ -6,3 +6,4 @@ class UserDataSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserData
         fields = ['user', 'answeredQuestions', 'wrongQuestions', 'rightQuestions']
+        depth = 1
